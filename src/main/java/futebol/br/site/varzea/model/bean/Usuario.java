@@ -1,9 +1,7 @@
 package futebol.br.site.varzea.model.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -55,6 +53,19 @@ public class Usuario {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    /*Relação Usuario Cartão de credito*/
+
+    @OneToMany (mappedBy = "usuario")
+    private List<CartaoDeCredito> cartoesDeCredito;
+
+    public List<CartaoDeCredito> getCartaoDeCredito() {
+        return cartoesDeCredito;
+    }
+
+    public void setCartaoDeCredito(List<CartaoDeCredito> cartaoDeCredito) {
+        this.cartoesDeCredito = cartaoDeCredito;
     }
 
     @Override
